@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 import Data.Generator
 import Data.Validator
 import Data.Encoder
-from Algorithm import PredictionModel
+from Prediction import prediction_model
 
 
 def calc_profit(deals, products):  # Calculate each product's year profit
@@ -75,7 +75,7 @@ def main():
     _, profit, _ = calc_profit(deal_df, product_df)
 
     # Initialize and train the profit prediction model
-    in_size, model, criterion, optimizer = PredictionModel.init_Model(product_df)
+    in_size, model, criterion, optimizer = prediction_model.init_Model(product_df)
 
     # Divide (data (100%)) set to    ---------->   (train (80%) , test (20%)) data sets
     X_train, X_test, y_train, y_test = train_test_split(x_products, profit, test_size=0.2, random_state=42)
